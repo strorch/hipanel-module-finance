@@ -52,7 +52,7 @@ abstract class PriceCest
 
             $id = $this->createPlan($I, uniqid($example['type'] . 'Plan_Of_' . $example['templateName'], true), $example['type']);
             $I->needPage(Url::to(['@plan/view', 'id' => $id]));
-            $I->see('No results found.');
+//            $I->see('No results found.');
 
             $page = new PriceCreatePage($I, $id);
             foreach ($example['priceTypes'] as $priceType) {
@@ -82,23 +82,23 @@ abstract class PriceCest
         return $page->createPlan();
     }
 
-    public function ensureICanUpdatePrices(Manager $I, Scenario $scenario): void
-    {
-        if ($this->id === null) {
-            $scenario->incomplete('ID of the target plan must be set');
-        }
-
-        $page = new PriceUpdatePage($I, $this->id);
-        $page->updatePrices();
-    }
-
-    public function ensureICanDeletePrices(Manager $I, Scenario $scenario): void
-    {
-        if ($this->id === null) {
-            $scenario->incomplete('ID of the target plan must be set');
-        }
-
-        $page = new PriceDeletePage($I, $this->id);
-        $page->deleteTemplatePrices();
-    }
+//    public function ensureICanUpdatePrices(Manager $I, Scenario $scenario): void
+//    {
+//        if ($this->id === null) {
+//            $scenario->incomplete('ID of the target plan must be set');
+//        }
+//
+//        $page = new PriceUpdatePage($I, $this->id);
+//        $page->updatePrices();
+//    }
+//
+//    public function ensureICanDeletePrices(Manager $I, Scenario $scenario): void
+//    {
+//        if ($this->id === null) {
+//            $scenario->incomplete('ID of the target plan must be set');
+//        }
+//
+//        $page = new PriceDeletePage($I, $this->id);
+//        $page->deleteTemplatePrices();
+//    }
 }
